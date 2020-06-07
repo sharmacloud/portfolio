@@ -1,0 +1,44 @@
+
+
+<ion-grid fixed>
+
+
+  
+  <ion-row>
+    <ion-col size="12">
+    <ion-list-header>
+      <ion-label>Repo Name</ion-label>
+      <ion-label>Date Created</ion-label>
+      <ion-label>Written in</ion-label>
+    </ion-list-header>
+    </ion-col>
+    </ion-row>
+
+<div *ngFor="let data of repoData">
+    <a href="{{ data.html_url }}" target="_blank">
+    <ion-row>
+    <ion-col size="12">
+    <ion-list-header>
+      <ion-label>{{ data.name }}</ion-label>
+      <ion-label>{{ data.created_at | date }}</ion-label>
+      <ng-container *ngIf="data.language; else elseTemplate">
+        
+      <ion-label>{{ data.language }}</ion-label>
+      </ng-container>
+      <ng-template #elseTemplate>
+        <ion-label>
+          <ion-icon name="remove-outline"></ion-icon>        
+        </ion-label>
+
+      </ng-template>
+      
+    </ion-list-header>
+    </ion-col>
+    </ion-row>
+  </a>
+</div>
+    
+    </ion-grid>
+    
+    
+    
